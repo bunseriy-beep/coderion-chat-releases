@@ -24,7 +24,7 @@
         "AppImage",
         "deb"
       ],
-      "icon": "icon.png",
+      "icon": "icon-512.png",
       "category": "Network"
     },
     "appImage": {
