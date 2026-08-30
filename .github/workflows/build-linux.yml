@@ -31,12 +31,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --linux --x64 --publish never
 
-      - name: Create Release
+      - name: Upload to Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ls -la dist/
-          gh release create "v1.0.0" dist/*.AppImage dist/*.deb \
-            --title "QLinkChat v1.0.0" \
-            --notes "Linux-установщики QLinkChat" \
-            --repo bunseriy-beep/qlinkchat-releases || echo "release may already exist"
+          ls -la dist/*.AppImage dist/*.deb || true
+          gh release upload v1.0.0 dist/*.AppImage dist/*.deb \
+            --repo bunseriy-beep/qlinkchat-releases \
+            --clobber || echo "upload failed"
