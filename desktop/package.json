@@ -47,15 +47,25 @@
     },
     "mac": {
       "target": [
-        "dmg",
-        "zip",
-        "pkg"
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "pkg",
+          "arch": ["x64", "arm64"]
+        }
       ],
       "icon": "icon-512.png",
-      "category": "public.app-category.social-networking"
+      "category": "public.app-category.social-networking",
+      "identity": null
     },
     "dmg": {
-      "artifactName": "QLinkChat-${version}.dmg"
+      "artifactName": "QLinkChat-${version}-${arch}.dmg"
     },
     "linux": {
       "target": [
@@ -75,9 +85,6 @@
     },
     "rpm": {
       "artifactName": "qlinkchat-${version}.x86_64.rpm"
-    },
-    "tar": {
-      "artifactName": "QLinkChat-${version}.tar.gz"
     }
   },
   "author": "bunseriy-beep <bunseriy@gmail.com>",

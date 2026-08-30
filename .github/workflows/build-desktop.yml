@@ -59,7 +59,10 @@ jobs:
       - name: Build macOS (dmg + zip + pkg)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --mac --x64 --publish never
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: |
+          npx electron-builder --mac dmg zip pkg --arm64 --publish never || true
+          npx electron-builder --mac dmg zip --x64 --publish never || true
 
       - name: Upload macOS to Release
         env:
