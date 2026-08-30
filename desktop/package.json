@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --linux --x64"
+    "dist:win": "electron-builder --win --x64",
+    "dist:linux": "electron-builder --linux --x64",
+    "dist:mac": "electron-builder --mac --x64"
   },
   "build": {
     "appId": "com.qlinkchat.app",
@@ -17,12 +19,50 @@
       "main.js",
       "preload.js",
       "icon.png",
-      "icon.ico"
+      "icon.ico",
+      "icon-512.png"
     ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable",
+        "msi"
+      ],
+      "icon": "icon.ico",
+      "sign": false,
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "QLinkChat",
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "installerHeaderIcon": "icon.ico"
+    },
+    "portable": {
+      "artifactName": "QLinkChat-Portable-${version}.exe"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip",
+        "pkg"
+      ],
+      "icon": "icon-512.png",
+      "category": "public.app-category.social-networking"
+    },
+    "dmg": {
+      "artifactName": "QLinkChat-${version}.dmg"
+    },
     "linux": {
       "target": [
         "AppImage",
-        "deb"
+        "deb",
+        "rpm",
+        "tar.gz"
       ],
       "icon": "icon-512.png",
       "category": "Network"
@@ -32,6 +72,12 @@
     },
     "deb": {
       "artifactName": "qlinkchat_${version}_amd64.deb"
+    },
+    "rpm": {
+      "artifactName": "qlinkchat-${version}.x86_64.rpm"
+    },
+    "tar": {
+      "artifactName": "QLinkChat-${version}.tar.gz"
     }
   },
   "author": "bunseriy-beep <bunseriy@gmail.com>",

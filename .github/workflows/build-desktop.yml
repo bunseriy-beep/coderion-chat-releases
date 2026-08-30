@@ -1,0 +1,71 @@
+name: Build Desktop
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Linux (AppImage + deb + rpm + tar.gz)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --linux --x64 --publish never
+
+      - name: Upload Linux to Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ls -la dist/*.AppImage dist/*.deb dist/*.rpm dist/*.tar.gz || true
+          gh release upload v1.0.0 dist/*.AppImage dist/*.deb dist/*.rpm dist/*.tar.gz \
+            --repo bunseriy-beep/qlinkchat-releases \
+            --clobber || echo "linux upload failed"
+
+  build-mac:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build macOS (dmg + zip + pkg)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --mac --x64 --publish never
+
+      - name: Upload macOS to Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ls -la dist/*.dmg dist/*.zip dist/*.pkg || true
+          gh release upload v1.0.0 dist/*.dmg dist/*.zip dist/*.pkg \
+            --repo bunseriy-beep/qlinkchat-releases \
+            --clobber || echo "mac upload failed"
