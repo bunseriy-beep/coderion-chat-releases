@@ -1,0 +1,47 @@
+{
+  "name": "qlinkchat-desktop",
+  "version": "1.0.0",
+  "description": "QLinkChat — настольное приложение",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux --x64"
+  },
+  "build": {
+    "appId": "com.qlinkchat.app",
+    "productName": "QLinkChat",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "icon.png",
+      "icon.ico"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icon.png",
+      "category": "Network"
+    },
+    "appImage": {
+      "artifactName": "QLinkChat-${version}.AppImage"
+    },
+    "deb": {
+      "artifactName": "qlinkchat_${version}_amd64.deb"
+    }
+  },
+  "author": "bunseriy-beep <bunseriy@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}
