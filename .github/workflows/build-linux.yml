@@ -29,7 +29,7 @@ jobs:
       - name: Build Linux (deb + AppImage)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --linux --x64
+        run: npx electron-builder --linux --x64 --publish never
 
       - name: Create Release
         env:
