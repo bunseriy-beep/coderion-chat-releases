@@ -1,8 +1,8 @@
-# QLinkChat — Релизы
+# Coderion Chat — Релизы
 
-Официальные установщики QLinkChat для Windows, macOS и Linux.
+Официальные установщики Coderion Chat для Windows, macOS и Linux.
 
-Скачивание доступно через страницу релизов: https://github.com/bunseriy-beep/qlinkchat-releases/releases
+Скачивание доступно через страницу релизов: https://github.com/bunseriy-beep/coderion-chat-releases/releases
 
 ## Платформы
 
@@ -14,4 +14,4 @@
 
 ## Веб-версия
 
-https://qlinkchat.vercel.app
+https://coderion-chat.vercel.app

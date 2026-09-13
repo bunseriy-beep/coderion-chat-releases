@@ -37,7 +37,7 @@ jobs:
         run: |
           ls -la dist/*.AppImage dist/*.deb dist/*.rpm dist/*.tar.gz || true
           gh release upload v1.0.0 dist/*.AppImage dist/*.deb dist/*.rpm dist/*.tar.gz \
-            --repo bunseriy-beep/qlinkchat-releases \
+            --repo bunseriy-beep/coderion-chat-releases \
             --clobber || echo "linux upload failed"
 
   build-mac:
@@ -70,5 +70,5 @@ jobs:
         run: |
           ls -la dist/*.dmg dist/*.zip dist/*.pkg || true
           gh release upload v1.0.0 dist/*.dmg dist/*.zip dist/*.pkg \
-            --repo bunseriy-beep/qlinkchat-releases \
+            --repo bunseriy-beep/coderion-chat-releases \
             --clobber || echo "mac upload failed"

@@ -1,7 +1,7 @@
 {
-  "name": "qlinkchat-desktop",
+  "name": "coderion-chat-desktop",
   "version": "1.0.0",
-  "description": "QLinkChat — настольное приложение",
+  "description": "Coderion Chat — настольное приложение",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -10,8 +10,8 @@
     "dist:mac": "electron-builder --mac --x64"
   },
   "build": {
-    "appId": "com.qlinkchat.app",
-    "productName": "QLinkChat",
+    "appId": "com.coderionchat.app",
+    "productName": "Coderion Chat",
     "directories": {
       "output": "dist"
     },
@@ -37,13 +37,13 @@
       "perMachine": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "QLinkChat",
+      "shortcutName": "Coderion Chat",
       "installerIcon": "icon.ico",
       "uninstallerIcon": "icon.ico",
       "installerHeaderIcon": "icon.ico"
     },
     "portable": {
-      "artifactName": "QLinkChat-Portable-${version}.exe"
+      "artifactName": "Coderion Chat-Portable-${version}.exe"
     },
     "mac": {
       "target": [
@@ -65,7 +65,7 @@
       "identity": null
     },
     "dmg": {
-      "artifactName": "QLinkChat-${version}-${arch}.dmg"
+      "artifactName": "Coderion Chat-${version}-${arch}.dmg"
     },
     "linux": {
       "target": [
@@ -78,19 +78,19 @@
       "category": "Network"
     },
     "appImage": {
-      "artifactName": "QLinkChat-${version}.AppImage"
+      "artifactName": "Coderion Chat-${version}.AppImage"
     },
     "deb": {
-      "artifactName": "qlinkchat_${version}_amd64.deb"
+      "artifactName": "coderionchat_${version}_amd64.deb"
     },
     "rpm": {
-      "artifactName": "qlinkchat-${version}.x86_64.rpm"
+      "artifactName": "coderion-chat-${version}.x86_64.rpm"
     }
   },
   "author": "bunseriy-beep <bunseriy@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bunseriy-beep/qlinkchat-releases.git"
+    "url": "https://github.com/bunseriy-beep/coderion-chat-releases.git"
   },
   "license": "ISC",
   "type": "commonjs",

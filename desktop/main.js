@@ -2,7 +2,7 @@ const { app, BrowserWindow, Tray, Menu, nativeImage, Notification, ipcMain } = r
 const path = require('path');
 const fs = require('fs');
 
-const APP_URL = 'https://qlinkchat.vercel.app';
+const APP_URL = 'https://coderion-chat.vercel.app';
 
 let mainWindow = null;
 let tray = null;
@@ -23,7 +23,7 @@ function createWindow() {
     minWidth: 400,
     minHeight: 600,
     icon: findIcon(),
-    title: 'QLinkChat',
+    title: 'Coderion Chat',
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -51,10 +51,10 @@ function createTray() {
   const iconPath = findIcon();
   const icon = iconPath ? nativeImage.createFromPath(iconPath).resize({ width: 16, height: 16 }) : nativeImage.createEmpty();
   tray = new Tray(icon);
-  tray.setToolTip('QLinkChat');
+  tray.setToolTip('Coderion Chat');
 
   const ctx = Menu.buildFromTemplate([
-    { label: 'Открыть QLinkChat', click: () => { if (mainWindow) mainWindow.show(); else createWindow(); } },
+    { label: 'Открыть Coderion Chat', click: () => { if (mainWindow) mainWindow.show(); else createWindow(); } },
     { type: 'separator' },
     { label: 'Выйти', click: () => { app.isQuitting = true; app.quit(); } },
   ]);
